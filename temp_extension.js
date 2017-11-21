@@ -20,12 +20,16 @@
     return {status: 2, msg: 'Ready'};
   };
   
+var sunset='';
+var sanrise='';
+var azimuth='';
+var altitude='';
+
   var descriptor = {blocks: [
-      ['R', '天気を取得', 'get_weather']
+      ['R', '太陽の取得', 'get_weather']
       ]};
   // 利用する機能名、ブロックの情報、そしてブロックのロジックを含むオブジェクトを登録
-  //ScratchExtensions.register('お天気拡張', descriptor, ext);
-
+  //ScratchExtensions.register('太陽の位置拡張', descriptor, ext);
 
 
 ext.get_weather = function(callback) {
@@ -45,12 +49,17 @@ ext.get_weather = function(callback) {
     success: function(data) {
       if (data.status == 200) {
 //        console.log(data);
-          var main = data.result.sunset;
-          if (main == undefined) {
-            callback('');
-          } else {
-            callback(main);
-          }
+//          var main = data.result.sunset+data.result.sunrise;
+          sunset = data.result.sunset;
+          sunrise = data.result.sunrise;
+          azimuth = data.result.azimuth;
+          altitude = data.result.altitude;
+//          var Array = [data.result.sunset,data.result.sunrise];
+//          if (main == undefined) {
+//            callback('');
+//          } else {
+            callback('OK');
+//          }
       } else {
         callback('');
       }
@@ -60,10 +69,67 @@ ext.get_weather = function(callback) {
 };
 
 
+ext.get_sunset = function(callback) {
+	if (sunset=='') {
+	  callback('0');
+	}else{
+	  callback(sunset);
+	}
+
+};
+
+
+ext.get_sunrise = function(callback) {
+	if (sunrise=='') {
+	  callback('0');
+	}else{
+	  callback(sunrise);
+	}
+
+};
+
+ext.get_azimuth = function(callback) {
+	if (azimuth=='') {
+	  callback('0');
+	}else{
+	  callback(azimuth);
+	}
+
+};
+
+
+ext.get_altitude = function(callback) {
+	if (altitude=='') {
+	  callback('0');
+	}else{
+	  callback(altitude);
+	}
+
+};
 
 
   // Scratch に作ったブロックを登録します
   ScratchExtensions.register('お天気拡張', descriptor, ext);
+
+  var descriptor = {blocks: [
+      ['R', '日の出', 'get_sunset'],
+      ['R', '日の入', 'get_sunrise'],
+      ['R', '方位角', 'get_azimuth'],
+      ['R', '高度', 'get_altitude']
+      ]};
+  // 利用する機能名、ブロックの情報、そしてブロックのロジックを含むオブジェクトを登録
+  //ScratchExtensions.register('太陽の位置拡張', descriptor, ext);
+
+
+
+  // Scratch に作ったブロックを登録します
+  ScratchExtensions.register('お天気拡張2', descriptor, ext);
+
+
+
+
+
+
 
 
   // この関数がブロック処理になります。
