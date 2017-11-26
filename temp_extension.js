@@ -108,15 +108,17 @@ ext.set_daytime = function(y,mo,d,h,mi,callback) {
 
 };
 
+
+  // Scratch に作ったブロックを登録します
+  ScratchExtensions.register('ポイント変更昨日の拡張', descriptor, ext);
+
+
+
   var descriptor = {blocks: [
       ['R', '太陽の取得', 'get_weather']
       ]};
   // 利用する機能名、ブロックの情報、そしてブロックのロジックを含むオブジェクトを登録
   //ScratchExtensions.register('太陽の位置拡張', descriptor, ext);
-
-
-  // Scratch に作ったブロックを登録します
-  ScratchExtensions.register('ポイント変更昨日の拡張', descriptor, ext);
 
 
 
