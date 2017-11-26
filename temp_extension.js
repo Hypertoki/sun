@@ -115,6 +115,11 @@ ext.set_daytime = function(y,mo,d,h,mi,callback) {
   //ScratchExtensions.register('太陽の位置拡張', descriptor, ext);
 
 
+  // Scratch に作ったブロックを登録します
+  ScratchExtensions.register('ポイント変更昨日の拡張', descriptor, ext);
+
+
+
 ext.get_weather = function(callback) {
   $.ajax({
 //    url: 'http://mgpn2.sakura.ne.jp/api/sun/position.cgi?jsonp=caller&y=2000&m=5&d=5&h=12&lat=35.6544&lon=139.7447',
