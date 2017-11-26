@@ -25,6 +25,89 @@ var sanrise='';
 var azimuth='';
 var altitude='';
 
+var year = '2017';
+var month = '6';
+var day = '21';
+var house = '12';
+var minute = '0';
+var lat = '35.4378';
+var lon = '136.7520';
+
+var descriptor = {blocks: [
+      [' ', '日時を%y年%mo月%d日%h時%mi分にする', 'set_daytime',2017,6,21,12,0],
+      [' ', '場所を%p.pointに変更する','set_point','岐阜']
+      ],
+      menu: {
+      point : ['岐阜','納沙布岬','与那国島','ストックホルム','シドニー','シンガポール']
+      },
+    };
+  // 利用する機能名、ブロックの情報、そしてブロックのロジックを含むオブジェクトを登録
+  //ScratchExtensions.register('太陽の位置拡張', descriptor, ext);
+
+
+//'岐阜','納沙布岬'43.3853 145.8169,'与那国島 24.4498 122.9342','ストックホルム 59.3268 18.0717','シドニー -33.8731 151.2060','シンガポール 1.4043 103.7930'
+ext.set_point = function(p,callback){
+    switch (p){
+      var cf='1';
+      case '岐阜':
+        lat = '35.4378';
+        lon = '136.7520';
+        cf='0';
+        break;
+      case '納沙布岬':
+        lat = '43.3853';
+        lon = '145.8169';
+        cf='0';
+        break;
+      case '与那国島':
+        lat = '24.4498';
+        lon = '122.9342';
+        cf='0';
+        break;
+      case 'ストックホルム':
+        lat = '59.3268';
+        lon = '18.0717';
+        cf='0';
+        break;
+      case 'シドニー':
+        lat = '-33.8731';
+        lon = '151.2060';
+        cf='0';
+        break;
+      case 'シンガポール':
+        lat = '1.4043';
+        lon = '103.7930';
+        cf='0';
+        break;
+    }
+      callback(cf); 
+}
+
+ext.set_daytime = function(y,mo,d,h,mi,callback) {
+	var cf='1';
+	if (y<1900 || y>3000) {
+	  cf='2';
+	}else{
+	var di = new Date(y,mo-1,d);
+	 if(di.getFullYear() == y && di.getMonth() == mo-1 && di.getDate() == d){
+	 	if (h<0 || h>23 || mi<0 || mi>59 ) {
+	 	  cf='4';
+	 	}else{
+	 	  year = y;
+	 	  month = mo;
+	 	  day = d;
+	 	  house = h;
+	 	  minute = mi;
+	 	  cf='0';
+	 	}
+	 }else{
+	 	cf='3'; 
+	 }
+	}
+	callback(cf);
+
+};
+
   var descriptor = {blocks: [
       ['R', '太陽の取得', 'get_weather']
       ]};
@@ -34,8 +117,8 @@ var altitude='';
 
 ext.get_weather = function(callback) {
   $.ajax({
-//    url: 'http://mgpn2.sakura.ne.jp/api/sun/position.cgi?jsonp=caller&y=2030&m=12&d=20&h=12&lat=80.0&lon=135.5',
-    url: 'http://mgpn2.sakura.ne.jp/api/sun/position.cgi?jsonp=caller&y=2000&m=5&d=5&h=12&lat=35.6544&lon=139.7447',
+//    url: 'http://mgpn2.sakura.ne.jp/api/sun/position.cgi?jsonp=caller&y=2000&m=5&d=5&h=12&lat=35.6544&lon=139.7447',
+    url: 'http://mgpn2.sakura.ne.jp/api/sun/position.cgi?jsonp=caller&y='+year+'&m='+month+'&d='+day+'&h='+house+'&min='+minute+'&lat='+lat+'&lon='+lon,
     type: 'GET',
     dataType: 'jsonp',
     jsonpCallback: 'caller',
