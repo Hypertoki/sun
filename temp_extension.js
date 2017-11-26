@@ -37,7 +37,7 @@ var descriptor = {blocks: [
       [' ', '日時を%y年%mo月%d日%h時%mi分にする', 'set_daytime',2017,6,21,12,0],
       [' ', '場所を%p.pointに変更する','set_point','岐阜']
       ],
-      menu: {
+      menus: {
       point : ['岐阜','納沙布岬','与那国島','ストックホルム','シドニー','シンガポール']
       },
     };
