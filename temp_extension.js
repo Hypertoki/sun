@@ -34,8 +34,8 @@ var lat = '35.4378';
 var lon = '136.7520';
 
 var descriptor = {blocks: [
-      [' ', '日時を%n年%n月%n日%n時%n分にする', 'set_daytime',2017,6,21,12,0],
-      [' ', '場所を%m.pointに変更する','set_point','岐阜']
+      ['R', '日時を %n 年 %n 月 %n 日 %n 時 %n 分にする', 'set_daytime',2017,6,21,12,0],
+      ['R', '場所を %m.point に変更する','set_point','岐阜']
       ],
       menus: {
       point : ['岐阜','納沙布岬','与那国島','ストックホルム','シドニー','シンガポール']
