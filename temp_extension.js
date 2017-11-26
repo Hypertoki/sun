@@ -103,7 +103,7 @@ ext.set_daytime = function(y,mo,d,h,mi,callback) {
 	 }else{
 	 	cf='3'; 
 	 }
-	}
+//	}
 	callback(cf);
 
 };
