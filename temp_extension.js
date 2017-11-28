@@ -57,7 +57,7 @@ var descriptor = {blocks: [
 	 	  day = d;
 	 	  house = h;
 	 	  minute = mi;
-	 	  cf='0';
+	 	  cf=y+'年'+mo+'月'+d+'日'+h+'時'+mi+'分';
 	 	}
 	 }else{
 	 	cf='3'; 
@@ -73,102 +73,37 @@ ext.set_point = function(p, callback){
       case '岐阜':
         lat = '35.4378';
         lon = '136.7520';
-        cf='0';
+        cf='岐阜';
         break;
       case '納沙布岬':
         lat = '43.3853';
         lon = '145.8169';
-        cf='0';
+        cf='納沙布岬';
         break;
       case '与那国島':
         lat = '24.4498';
         lon = '122.9342';
-        cf='0';
+        cf='与那国島';
         break;
       case 'ストックホルム':
         lat = '59.3268';
         lon = '18.0717';
-        cf='0';
+        cf='ストックホルム';
         break;
       case 'シドニー':
         lat = '-33.8731';
         lon = '151.2060';
-        cf='0';
+        cf='シドニー';
         break;
       case 'シンガポール':
         lat = '1.4043';
         lon = '103.7930';
-        cf='0';
+        cf='シンガポール';
         break;
     } 
       callback(cf); 
 }
 
-/*
-
-//'岐阜','納沙布岬'43.3853 145.8169,'与那国島 24.4498 122.9342','ストックホルム 59.3268 18.0717','シドニー -33.8731 151.2060','シンガポール 1.4043 103.7930'
-ext.set_point = function(p,callback){
-    switch (p){
-      var cf='1';
-      case '岐阜':
-        lat = '35.4378';
-        lon = '136.7520';
-        cf='0';
-        break;
-      case '納沙布岬':
-        lat = '43.3853';
-        lon = '145.8169';
-        cf='0';
-        break;
-      case '与那国島':
-        lat = '24.4498';
-        lon = '122.9342';
-        cf='0';
-        break;
-      case 'ストックホルム':
-        lat = '59.3268';
-        lon = '18.0717';
-        cf='0';
-        break;
-      case 'シドニー':
-        lat = '-33.8731';
-        lon = '151.2060';
-        cf='0';
-        break;
-      case 'シンガポール':
-        lat = '1.4043';
-        lon = '103.7930';
-        cf='0';
-        break;
-    }
-      callback(cf); 
-}
-
- ext.set_daytime = function(y,mo,d,h,mi,callback) {
-	var cf='1';
-	if (y<1900 || y>3000) {
-	  cf='2';
-	}else{
-	var di = new Date(y,mo-1,d);
-	 if(di.getFullYear() == y && di.getMonth() == mo-1 && di.getDate() == d){
-	 	if (h<0 || h>23 || mi<0 || mi>59 ) {
-	 	  cf='4';
-	 	}else{
-	 	  year = y;
-	 	  month = mo;
-	 	  day = d;
-	 	  house = h;
-	 	  minute = mi;
-	 	  cf='0';
-	 	}
-	 }else{
-	 	cf='3'; 
-	 }
-	}
-	callback(cf);
-
-}; 
-*/
 
   // Scratch に作ったブロックを登録します
   ScratchExtensions.register('ポイント変更昨日の拡張', descriptor, ext);
