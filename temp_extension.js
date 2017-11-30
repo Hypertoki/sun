@@ -203,7 +203,7 @@ ext.get_altitude = function(callback) {
 // **********************************************************************************************************************************************************
 //          　　　　　　　　　　　　　ここから月の処理
 // **********************************************************************************************************************************************************
-ext.get_weather = function(callback) {
+ext.get_luna = function(callback) {
   $.ajax({
 //    url: 'http://mgpn2.sakura.ne.jp/api/moon/position.cgi?jsonp=caller&y=2000&m=5&d=5&h=12&lat=35.6544&lon=139.7447',
     url: 'http://mgpn2.sakura.ne.jp/api/moon/position.cgi?jsonp=caller&y='+year+'&m='+month+'&d='+day+'&h='+house+'&min='+minute+'&lat='+lat+'&lon='+lon,
