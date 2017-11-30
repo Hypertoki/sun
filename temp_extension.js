@@ -219,16 +219,10 @@ ext.get_luna = function(callback) {
     },
     success: function(data) {
       if (data.status == 200) {
-//        console.log(data);
           moonazi = data.result.azimuth;
           moonalt = data.result.altitude;
           ago = data.result.age
-//          var Array = [data.result.sunset,data.result.sunrise];
-//          if (main == undefined) {
-//            callback('');
-//          } else {
             callback('OK');
-//          }
       } else {
         callback('');
       }
@@ -239,7 +233,7 @@ ext.get_luna = function(callback) {
 
 
 ext.get_age = function(callback) {
-	if (sunrise=='') {
+	if (age=='') {
 	  callback('0');
 	}else{
 	  callback(age);
@@ -248,7 +242,7 @@ ext.get_age = function(callback) {
 };
 
 ext.get_moonazi = function(callback) {
-	if (azimuth=='') {
+	if (moonazi=='') {
 	  callback('0');
 	}else{
 	  callback(moonazi);
@@ -258,7 +252,7 @@ ext.get_moonazi = function(callback) {
 
 
 ext.get_moonalt = function(callback) {
-	if (altitude=='') {
+	if (moonalt=='') {
 	  callback('0');
 	}else{
 	  callback(moonalt);
@@ -282,7 +276,7 @@ ext.get_moonalt = function(callback) {
       ['R', '方位角', 'get_azimuth'],
       ['R', '高度', 'get_altitude'],
       ['R', '月齢', 'get_age'],
-      ['R', '方位角（月）', 'get_miinazi'],
+      ['R', '方位角（月）', 'get_moonazi'],
       ['R', '高度（月）', 'get_moonalt']
       ]};
   // 利用する機能名、ブロックの情報、そしてブロックのロジックを含むオブジェクトを登録
