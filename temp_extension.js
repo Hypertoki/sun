@@ -221,7 +221,7 @@ ext.get_luna = function(callback) {
       if (data.status == 200) {
           moonazi = data.result.azimuth;
           moonalt = data.result.altitude;
-          ago = data.result.age
+          age = data.result.age
             callback('OK');
       } else {
         callback('');
